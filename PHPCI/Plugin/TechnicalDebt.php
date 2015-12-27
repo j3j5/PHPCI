@@ -130,7 +130,6 @@ class TechnicalDebt implements PHPCI\Plugin, PHPCI\ZeroConfigPlugin
         $this->phpci->logExecOutput(false);
 
         list($errorCount, $data) = $this->getErrorList();
-
         $this->phpci->log("Found $errorCount instances of " . implode(', ', $this->searches));
 
         $this->build->storeMeta('technical_debt-warnings', $errorCount);
@@ -207,5 +206,6 @@ class TechnicalDebt implements PHPCI\Plugin, PHPCI\ZeroConfigPlugin
                 }
             }
         }
+        return [$errorCount, $data];
     }
 }
